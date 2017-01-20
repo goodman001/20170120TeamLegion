@@ -1,0 +1,35 @@
+{% extends 'patients/base.html' %}
+{% block content %}
+<div class="jumbotron visible-lg visible-md visible-sm visible-xs"  style="margin-top:10px;margin-bottom:0px;padding:0px;background-color:white;">
+	<div class="container" style="padding:0px;margin-top:20px;margin-bottom:0px;" >
+		<h3><span class="glyphicon glyphicon-tags" aria-hidden="true"></span> Patient main page</h3>
+	</div>
+	<div class="container" style="padding:0px;margin-top:0px;margin-bottom:0px;" >
+		<div class="col-md-12" style="padding-left:5px;margin-left:0px;" >
+			<div class="row" style="padding:8px;margin-left:0px;background-color:#fafafa;">
+				<div class = "col-md-12">
+					<div class="thumbnail" style="margin-bottom:10px;padding-left:10%;padding-right:10%;">
+						<h3>Patient information:</h3>
+						<div class="form-group">
+							<ul class="list-unstyled">
+								<li><strong>UID:</strong> &nbsp;&nbsp;&nbsp;{{patients.id}}</li>
+								<li><strong>Username:</strong>&nbsp;&nbsp;&nbsp;{{patients.p_user_name}}</li>
+								<li><strong>Firstname:</strong>&nbsp;&nbsp;&nbsp;{{patients.p_first_name}}</li>
+								<li><strong>Lastname:</strong>&nbsp;&nbsp;&nbsp;{{patients.p_last_name}}</li>
+								<li><strong>Birthday:</strong>&nbsp;&nbsp;&nbsp;{{patients.p_birth_date}}</li>
+								<li><strong>Password:</strong>&nbsp;&nbsp;&nbsp;{{patients.p_password}}</li>
+								<li><strong>Doctor:</strong>&nbsp;&nbsp;&nbsp;{{patients.doc_id}}</li>
+							</ul>
+						</div>
+						<div class="form-group">
+							<a  class="btn btn-danger" href="{% url "patientlogoff" %}" >logoff</a>
+						</div>				  
+					</div>					
+				</div>
+				
+			</div> 
+		</div>                 
+	<div>
+</div>
+{% endblock %}
+

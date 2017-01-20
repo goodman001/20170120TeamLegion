@@ -1,0 +1,59 @@
+{% load staticfiles %}
+<html>
+<head>
+	<title>{{ title }}</title>
+
+	<!--Let browser know website is optimized for mobile-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+	<link rel="stylesheet" type="text/css" href='{% static "css/base.css" %}' />
+	<link rel="stylesheet" type="text/css" href='{% static "css/materialize.css" %}' />
+</head>
+
+<body>
+	<nav class="light-blue lighten-1" role="navigation">
+		<div class="nav-wrapper container"><a id="logo-container" href="/" class="brand-logo">Photo Food Diary</a>
+		  <ul class="right hide-on-med-and-down">
+		    <li><a href="/patients">Patients</a></li>
+		    <li><a href="/entry">Entries</a></li>
+		    <li><a href="/doctors">Doctors</a></li>
+		  </ul>
+
+		  <ul id="nav-mobile" class="side-nav">
+		    <li><a href="/patients">Patients</a></li>
+		    <li><a href="/entry">Entries</a></li>
+		    <li><a href="/doctors">Doctors</a></li>
+		  </ul>
+		  <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
+		</div>
+	</nav>
+
+	{% include "messages_display.html" %}
+	
+	{% block content %}
+
+	{% endblock content%}
+
+	<div class="fixed-action-btn">
+    	<a class="btn-floating btn-large green" href="/entry/add/">
+      		<i class="fa fa-plus" aria-hidden="true"></i>
+    	</a>
+	</div>
+</body>
+</html>
+
+<script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+<script src="https://use.fontawesome.com/95cb96d4f7.js"></script>
+<script src='{% static "js/materialize.js" %}'></script>
+<script src='{% static "js/init.js" %}'></script>
+
+<script type="text/javascript">
+    $(document).ready(function(){
+      console.log('foo')
+      $('.parallax').parallax();
+	  $('#id_image').trigger('click');
+    });
+</script>

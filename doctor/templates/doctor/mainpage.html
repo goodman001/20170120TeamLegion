@@ -1,0 +1,64 @@
+{% extends 'doctor/base.html' %}
+{% block content %}
+<div class="jumbotron visible-lg visible-md visible-sm visible-xs"  style="margin-top:10px;margin-bottom:0px;padding:0px;background-color:white;">
+	<div class="container" style="padding:0px;margin-top:20px;margin-bottom:0px;" >
+		<h3><span class="glyphicon glyphicon-tags" aria-hidden="true"></span> Doctor main page</h3>
+	</div>
+	<div class="container" style="padding:0px;margin-top:0px;margin-bottom:0px;" >
+		<div class="col-md-12" style="padding-left:5px;margin-left:0px;" >
+			<div class="row" style="padding:8px;margin-left:0px;background-color:#fafafa;">
+				<div class = "col-md-8">
+					<div class="thumbnail" style="margin-bottom:10px;padding-left:2%;padding-right:2%;">
+						
+						<h3>My Patients</h3>
+						<a  class="btn btn-danger" href="{% url "doctoraddpage"  %}" >Adding a new patient</a>
+						<table class="table table-striped">
+							<thead>
+							  <tr>
+								<th>ID</th>
+								<th>Firstname</th>
+								<th>Lastname</th>
+								<th>Birthday</th>
+								<th></th>
+							  </tr>
+							</thead>
+							<tbody>
+								{% for cell in patients %}
+								<tr>
+									<td>{{ cell.id }}</td>
+									<td>{{ cell.p_first_name }}</td>
+									<td>{{ cell.p_last_name }}</td>
+									<td>{{ cell.p_birth_date }}</td>
+									<td><a  class="btn btn-danger" href="{% url "doc_delete" cell.id %}" >delete</a> <a  class="btn btn-danger" href="{% url "doc_view" cell.id %}" >View</a></td>
+								</tr>
+								{% endfor %}
+							</tbody>
+						</table>
+					</div>
+				</div>
+				<div class = "col-md-4">
+					<div class="thumbnail" style="margin-bottom:10px;padding-left:10%;padding-right:10%;">
+						<h3>Doctor infomation:</h3>
+						<div class="form-group">
+							<ul class="list-unstyled">
+								<li><strong>UID:</strong> &nbsp;&nbsp;&nbsp;{{docinfo.id}}</li>
+								<li><strong>Username:</strong>&nbsp;&nbsp;&nbsp;{{docinfo.d_user_name}}</li>
+								<li><strong>Firstname:</strong>&nbsp;&nbsp;&nbsp;{{docinfo.d_first_name}}</li>
+								<li><strong>Lastname:</strong>&nbsp;&nbsp;&nbsp;{{docinfo.d_last_name}}</li>
+								<li><strong>Birthday:</strong>&nbsp;&nbsp;&nbsp;{{docinfo.d_birth_date}}</li>
+								<li><strong>Password:</strong>&nbsp;&nbsp;&nbsp;{{docinfo.d_password}}</li>
+							</ul>
+						</div>
+						<div class="form-group">
+							<a  class="btn btn-danger" href="{% url "doctorupdatepage" %}" >update</a>
+							<a  class="btn btn-danger" href="{% url "doctorlogoff" %}" >logoff</a>
+						</div>				  
+					</div>					
+				</div>
+				
+			</div> 
+		</div>                 
+	<div>
+</div>
+{% endblock %}
+

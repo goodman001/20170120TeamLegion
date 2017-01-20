@@ -1,0 +1,33 @@
+nav{
+	margin-bottom: 20px !important;
+}
+
+.blk-txt{
+	background-color: #fff;
+	padding: 12px !important;
+}
+
+.color-pill{
+	background-color: #29b6f6;
+	color: #fefefe;
+}
+
+.success {
+	color: green;
+}
+
+.card-img-limit{
+	overflow: hidden;
+	height: 200px !important;
+}
+
+.card-img-limit > img{
+	height: 100% !important;	
+}
+
+.delete-ico{
+	color: #cc3e3e !important;
+	margin-left: 85px;
+	font-size: 24px;
+	margin-right: 0 !important;
+}

@@ -1,0 +1,76 @@
+{% extends 'doctor/base.html' %}
+{% block content %}
+<div class="jumbotron visible-lg visible-md visible-sm visible-xs"  style="margin-top:10px;margin-bottom:0px;padding:0px;background-color:white;">
+	<div class="container" style="padding:0px;margin-top:20px;margin-bottom:0px;" >
+	<h3><span class="glyphicon glyphicon-tags" aria-hidden="true"></span> Add new patient</h3>
+	</div>
+	<div class="container" style="padding:0px;margin-top:0px;margin-bottom:0px;" >
+		<div class="col-md-12 " style="padding-left:5px;margin-left:0px;" >
+			<div class="row" style="padding:8px;margin-left:0px;background-color:#fafafa;">
+				<div class="thumbnail" style="margin-bottom:10px;padding-left:2%;padding-right:2%;">
+					<h4>Patient list(no add)</h4>
+					<table class="table table-striped">
+						<thead>
+						  <tr>
+							<th>ID</th>
+							<th>Firstname</th>
+							<th>Lastname</th>
+							<th>Birthday</th>
+							<th></th>
+						  </tr>
+						</thead>
+						<tbody>
+							{% for cell in patients %}
+							<tr>
+								<td>{{ cell.id }}</td>
+								<td>{{ cell.p_first_name }}</td>
+								<td>{{ cell.p_last_name }}</td>
+								<td>{{ cell.p_birth_date }}</td>
+								<td><a  class="btn btn-danger" href="{% url "doc_add" cell.id %}" >Add</a></td>
+							</tr>
+							{% endfor %}
+						</tbody>
+					</table>
+				</div>
+				<a  class="btn btn-danger" href="{% url "docindex" %}" >return back</a>
+			</div> 
+		</div>
+	</div>    
+</div>
+<script>$('#form').validation();</script>
+<script type="text/javascript">
+    $('.form_datetime').datetimepicker({
+        //language:  'fr',
+        weekStart: 1,
+        todayBtn:  1,
+                autoclose: 1,
+                todayHighlight: 1,
+                startView: 2,
+                forceParse: 0,
+        showMeridian: 1
+    });
+        $('.form_date').datetimepicker({
+        //language:  'en',
+        weekStart: 1,
+        todayBtn:  1,
+                autoclose: 1,
+                todayHighlight: 1,
+                startView: 2,
+                minView: 2,
+                forceParse: 0
+    });
+        $('.form_time').datetimepicker({
+        //language:  'fr',
+        weekStart: 1,
+        todayBtn:  1,
+                autoclose: 1,
+                todayHighlight: 1,
+                startView: 1,
+                minView: 0,
+                maxView: 1,
+                forceParse: 0
+    });
+</script>
+
+{% endblock %}
+

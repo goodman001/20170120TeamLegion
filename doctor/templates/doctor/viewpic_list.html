@@ -1,0 +1,74 @@
+{% extends "doctor/base.html" %}
+{% block content %}
+<div class="container">
+	<br>
+	<div class="row">
+		<div class="col-xs-12">
+			<h1 class="text-danger">View patient {{ patient_username }} infomation</h1>
+			<form  action="{% url 'doc_view' patient_id %}" method="post">{% csrf_token %}
+				<div class="form-group">
+					<div class="col-sm-3">
+						<select name="condition" class="form-control">
+							<option value='0'>All time</option>
+							<option value='1'>One weeks ago</option>
+							<option value='2'>Two weeks ago</option>
+							<option value='3'>Three weeks ago</option>
+							<option value='4'>A month ago</option>
+							<option value='5'>Two month ago</option>
+						</select>
+					</div>
+					<div class="col-sm-8">
+					  <input type="submit" class="buttons" value="Submit" />
+					</div>
+				</div>
+				
+			</form>
+		</div>
+	</div>
+	<div class="row">
+	{% for obj in object_list %}
+		<div class="col s12 l4">
+			<div class="card sticky-action medium">
+			    <div class="card-image waves-effect waves-block waves-light card-img-limit">
+			      {% if obj.image %}
+				  <img src="{{ obj.image.url }}" />
+				  {% endif %}
+			    </div>
+			    <div class="card-content">
+			      <span class="card-title activator grey-text text-darken-4">{{ obj.title }}<i class="material-icons right">more_vert</i></span>
+			      <p class="small">{{ obj.timestamp }}</p>
+			    </div>
+			    <div class="card-action right-align">
+
+                	<a href="{{ obj.get_absolute_url }}" class="waves-effect waves-light btn"><i class="fa fa-icon-book"></i>View</a>
+
+                	<!--<a class="waves-effect delete-ico" ><i class="fa fa-trash" aria-hidden="true"></i></a>-->
+
+              	</div>
+			    <div class="card-reveal">
+			      <span class="card-title grey-text text-darken-4">{{ obj.title }}<i class="material-icons right">close</i></span>
+			      <p>{{ obj.content }}</p>
+			    </div>
+			</div>
+		</div>
+	{% endfor %}
+	</div>
+
+	<div class="row">	
+		<div class="pagination">
+		    <span class="step-links">
+		        {% if object_list.has_previous %}
+		            <a href="?{{page_request_var}}={{ object_list.previous_page_number }}">previous</a>
+		        {% endif %}
+
+		        <span class="current">
+		            Page {{ object_list.number }} of {{ object_list.paginator.num_pages }}.
+		        </span>
+
+		        {% if object_list.has_next %}
+		            <a href="?{{page_request_var}}={{ object_list.next_page_number }}">next</a>
+		        {% endif %}
+		    </span>
+		</div> 
+	</div>	
+{% endblock %}
