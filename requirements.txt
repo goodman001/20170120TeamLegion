@@ -9,7 +9,7 @@ Collectfast==0.2.3
 colorama==0.3.7
 configparser==3.5.0
 dj-database-url==0.4.1
-Django==1.9
+Django==1.11.28
 django-redis-cache==1.6.5
 django-s3direct==0.4.8
 docutils==0.12
